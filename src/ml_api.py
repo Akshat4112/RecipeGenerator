@@ -12,25 +12,27 @@ from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import classification_report
 from sklearn.preprocessing import LabelEncoder
+from transformers import pipeline
 
 app = Flask(__name__)
 
 # load the model from disk
-#Loading all models
-# model = pickle.load(open('modelpath', 'rb'))  #modelpath will be there
+chef = pipeline('text-generation',model='./gpt2-gerchef', tokenizer='anonymous-german-nlp/german-gpt2')
 
 @app.route('/')
 def test():
     return "Test API"
 
-@app.route('/predict_file', methods=["POST"])
-def predict_file():
-    print("prediction")
-    # prediction = model.predict(df_filtered)
-    # return json.dumps(result)
+@app.route('/predict_text', methods=["POST"])
+def predict():
+    #Take text input
+    result = chef('Zuerst Hähnchen') 
+    result = result[0]['generated_text']
+    print(result)
+    return json.dumps({"prediction": result})
 
 if __name__== '__main__':
     app.run(port=5001)
 
-#ssh -i "ubuntu18_vent_team.pem" ubuntu@ec2-13-127-11-176.ap-south-1.compute.amazonaws.com
-#ec2-3-138-139-136.us-east-2.compute.amazonaws.com
+#ssh -i "textech.pem" ubuntu@ec2-3-144-203-238.us-east-2.compute.amazonaws.com
+#ec2-3-144-203-238.us-east-2.compute.amazonaws.com
