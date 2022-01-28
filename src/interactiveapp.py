@@ -14,5 +14,5 @@ def app():
         time.sleep(5)
         gif_runner.empty()
         #API CALL
-        text = "Potato, Tomato, and Lemon"
+        text = "zwiebeln mit der Sauce anbraten, mit der Gurkenhälften und einem fein gehackten Käse bestreuen und etwa 6-8 Stunden schmoren lassen.Nach Ende dieser Zeit die Pilze aus dem Glas vierteln und mit dem restlichen"
         st.success(text)
