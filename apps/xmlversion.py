@@ -1,7 +1,6 @@
 import streamlit as st
 def app():
-  st.title("XML for the Dataset")
-  st.text("Sample XML for the Dataset")
+  st.subheader("XML for the Dataset")
   code  = ''' <?xml version='1.0' encoding='utf-8'?>
   <data>
     <row>

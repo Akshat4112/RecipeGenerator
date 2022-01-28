@@ -1,7 +1,6 @@
 import streamlit as st
 def app():
-    st.title("RelaxNG for the Dataset")
-    st.text("RelaxNG for the Dataset")
+    st.subheader("RelaxNG for the Dataset")
     code  = ''' 
     <?xml version="1.0" encoding="UTF-8"?>
     <grammar ns="" xmlns="http://relaxng.org/ns/structure/1.0">

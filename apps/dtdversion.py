@@ -1,7 +1,6 @@
 import streamlit as st
 def app():
-    st.title("DTD for the Dataset")
-    st.text("Sample DTD for the Dataset")
+    st.subheader("DTD for the Dataset")
     code  = ''' <?xml encoding="UTF-8"?>
 
     <!ELEMENT data (row)+>

@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 # @st.cache(persist=True)
 def explore_data():
-    df = pd.read_csv("../data/processed/recipes_csv.csv")
+    df = pd.read_csv("data/processed/recipes_csv.csv")
     df = df.drop(columns=['index','Unnamed: 0'])
     return df
     
@@ -34,6 +34,3 @@ def app():
         st.text("Showing Length of Columns")
         st.write(data.shape[1])
 
-    # Show Summary of Dataset
-    if st.checkbox("Show Summary of Dataset"):
-        st.write(data.describe())

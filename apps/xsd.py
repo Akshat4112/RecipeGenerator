@@ -1,8 +1,6 @@
 import streamlit as st
 def app():
-    
-  st.title("XSD for the Dataset")
-  st.text("Sample XSD for the Dataset")
+  st.subheader("XSD for the Dataset")
   code  = '''
   <?xml version="1.0" encoding="UTF-8"?>
   <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
