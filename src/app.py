@@ -11,7 +11,7 @@ import aboutmlmodel
 import docs
 import userofdb
 import interactiveapp
-import dashboard
+# import dashboard
 
 PAGES = {
     "Interactive App": interactiveapp,
@@ -24,7 +24,7 @@ PAGES = {
     "EDA": exploratoryDataAnalysis,
     "About Machine Learning Model": aboutmlmodel,
     "Use of Database": userofdb,
-    "Dashboard": dashboard,
+    # "Dashboard": dashboard,
     "Documentation": docs
 }
 st.title("Recipe Generator App")
