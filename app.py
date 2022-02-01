@@ -10,7 +10,7 @@ import streamlit as st
 # import docs
 # import userofdb
 # import interactiveapp
-from apps import about_dataset, aboutmlmodel, dashboard, docs, dtdversion, exploratoryDataAnalysis, interactiveapp, relaxng, userofdb, whatitdoes, xmlversion, xsd
+from apps import about_dataset, aboutmlmodel, dashboard, dtdversion, exploratoryDataAnalysis, interactiveapp, relaxng, userofdb, whatitdoes, xmlversion, xsd
 from multiapp import MultiApp
 # import dashboard
 st.title("Recipe Generator App")
@@ -25,7 +25,7 @@ app.add_app("RELAXNG Version of data", relaxng.app)
 app.add_app("Exploratory Data Analysis", exploratoryDataAnalysis.app)
 app.add_app("About Machine Learning Model", aboutmlmodel.app)
 app.add_app("Insight Dashboard", dashboard.app)
-app.add_app("Documentation", docs.app)
+# app.add_app("Documentation", docs.app)
 # app.add("Data", data.app)
 app.run()
 

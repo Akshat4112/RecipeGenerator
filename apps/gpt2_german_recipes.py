@@ -111,11 +111,4 @@ chef = pipeline('text-generation',model='./gpt2-gerchef', tokenizer='anonymous-g
 
 chef('Die Nudeln Kochen, Fleisch anbraten')
 
-chef('Zuerst Hähnchen')
-
-chef('Der beste Weg, um einen Schokoladenkuchen zuzubereiten, ist')
-
-chef('Kartoffelpuffer')
-
-chef('Zuerst Hähnchen')[0]['generated_text']
 

@@ -34,5 +34,5 @@ def predict():
 if __name__== '__main__':
     app.run(port=5001)
 
-#ssh -i "textech.pem" ubuntu@ec2-3-144-203-238.us-east-2.compute.amazonaws.com
-#ec2-3-144-203-238.us-east-2.compute.amazonaws.com
+#ssh -i "textech.pem" ubuntu@ec2-3-20-227-146.us-east-2.compute.amazonaws.com
+#ec2-3-20-227-146.us-east-2.compute.amazonaws.com

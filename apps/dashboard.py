@@ -1,23 +1,46 @@
+from pyparsing import col
 import streamlit as st
 import sqlite3
 import pandas as pd
+import sqlite3
+from collections import Counter
+def create_connection(dbfile):
+    conn= None
+    try:
+        conn=sqlite3.connect(dbfile)
+    except Exception as e:
+        print(e)
 
-# conn = sqlite3.connect('textechdb781')
-# c = conn.cursor()
-# c.execute('''SELECT * FROM history''')
-# conn.commit()
-# df = pd.DataFrame(c.fetchall(), columns=['id','input_text', 'model', 'date'])
+    return conn
 
+database = "textechdb781"
+conn = create_connection(database)
+c = conn.cursor()
+c.execute('''SELECT * FROM history''')
+df = pd.DataFrame(c.fetchall(), columns=['id','input_text', 'model', 'date'])
+print(df.tail())
+
+top_10 = df['input_text']
+top_10_item = []
+for item in df['input_text']:
+    top_10_item.append(item)
+top_10_item = Counter(top_10_item)
+top_10_item = dict(top_10_item)
+top_10_dict = pd.DataFrame.from_dict(top_10_item, orient='index')
+top_10_dict.columns = ['name']
 
 def app():
     st.markdown("Data Insight Dashboard")
     left_column, right_column = st.columns(2)
     # You can use a column just like st.sidebar:
     with left_column:
-        start_date = st.date_input("Start Date:")
-        end_date = st.date_input("End Date:")
+        st.text("Top 10 search items are: ")
+        st.dataframe(top_10_dict[:10])
+        print("Chart")
+        
 
     # Or even better, call Streamlit functions inside a "with" block:
     with right_column:
-        print("Chart")
+        print("Draw a Chart")
+        print(top_10_dict.name.value_counts())
         

@@ -1,7 +1,13 @@
+from prometheus_client import Counter
 import streamlit as st
 import pandas as pd
+from collections import Counter
 import numpy as np
 import matplotlib.pyplot as plt
+import ast
+import json
+
+st.set_option('deprecation.showPyplotGlobalUse', False)
 # @st.cache(persist=True)
 def explore_data():
     df = pd.read_csv("data/processed/recipes_csv.csv")
@@ -34,3 +40,36 @@ def app():
         st.text("Showing Length of Columns")
         st.write(data.shape[1])
 
+    species_option = st.selectbox('Select Columns',('Url','Instructions','Ingredients','Day','Name', 'Year', 'Month', 'Weekday'))
+    data = explore_data()
+    if species_option == 'Url':
+        st.write(data['Url'])
+    elif species_option == 'Instructions':
+        st.write(data['Instructions'])
+    elif species_option == 'Ingredients':
+        st.write(data['Ingredients'])
+    elif species_option == 'Day':
+        st.write(data['Day'])
+    elif species_option == 'Name':
+        st.write(data['Name'])
+    elif species_option == 'Year':
+        st.write(data['Year'])
+    elif species_option == 'Month':
+        st.write(data['Month'])
+    elif species_option == 'Weekday':
+        st.write(data['Weekday'])
+    else:
+        st.write("Select A Column")
+    
+    if st.checkbox("Show Year Distribution"):
+        st.write(data.Year.value_counts().plot(kind='bar',figsize=(5,5)))
+        st.pyplot()
+
+    if st.checkbox("Show Month Distribution"):
+        st.write(data.Month.value_counts().plot(kind='bar',figsize=(5,5)))
+        st.pyplot()
+
+    if st.checkbox("Show Weekday Distribution"):
+        st.write(data.Weekday.value_counts().plot(kind='bar',figsize=(5,5)))
+        st.pyplot()
+    
