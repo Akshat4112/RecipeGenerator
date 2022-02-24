@@ -6,31 +6,23 @@ There are 3 phases of our project:
 2. Prepare 
 3. Access
 
+### Description of phases
+------------
 In Collect phase we have collected the data from chefkoch.de, i.e. around 12,000 recipes. 
 In Prepare phase we created XML, DTD, XSD, RelaxNG Schemas for it, also created the database using SQLite to store user query and model output data.
 In Access phase we connected database with the web app from which functionality can be used. 
 
 ### Technical Extensions
+------------
 1. Web App
 2. Machine Learning Model
 3. API Deployment
 4. XML Technologies, Python Libraries
 
 ### Tech Stack
-
-Extension needs to be decided, choices are Redis, Cassandra, Aws Athena <br>
-We are storing user query data and timestamps, and we will EDA on that data into the dashboard using streamlit.io <br>
-The Apps frontend will be on streamlit.io <br>
-The app will be hosted on AWS EC2 <br>
-
-### New version of Cookiecutter Data Science
 ------------
-Cookiecutter data science is moving to v2 soon, which will entail using
-the command `ccds ...` rather than `cookiecutter ...`. The cookiecutter command
-will continue to work, and this version of the template will still be available.
-To use the legacy template, you will need to explicitly use `-c v1` to select it.
-Please update any scripts/automation you have to append the `-c v1` option (as above),
-which is available now.
+
+
 
 
 ### The resulting directory structure
