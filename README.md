@@ -90,5 +90,4 @@ address   = {Universitat Stuttgart, Stuttgart, Germany},
 year      = {2022},
 month     = {February},
 url       = {https://github.com/Akshat4112/RecipeGenerator}
-}
 ```
