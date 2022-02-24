@@ -5,7 +5,22 @@ We are storing user query data and timestamps, and we will EDA on that data into
 The Apps frontend will be on streamlit.io <br>
 The app will be hosted on AWS EC2 <br>
 
+### New version of Cookiecutter Data Science
+------------
+Cookiecutter data science is moving to v2 soon, which will entail using
+the command `ccds ...` rather than `cookiecutter ...`. The cookiecutter command
+will continue to work, and this version of the template will still be available.
+To use the legacy template, you will need to explicitly use `-c v1` to select it.
+Please update any scripts/automation you have to append the `-c v1` option (as above),
+which is available now.
 
+
+### The resulting directory structure
+------------
+
+The directory structure of your new project looks like this: 
+
+```
 ├── LICENSE
 ├── Makefile           <- Makefile with commands like `make data` or `make train`
 ├── README.md          <- The top-level README for developers using this project.
@@ -31,7 +46,7 @@ The app will be hosted on AWS EC2 <br>
 ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
 │                         generated with `pip freeze > requirements.txt`
 │
-├── setup.py           <- Make this project pip installable with `pip install -e`
+├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
 ├── src                <- Source code for use in this project.
 │   ├── __init__.py    <- Makes src a Python module
 │   │
@@ -50,3 +65,18 @@ The app will be hosted on AWS EC2 <br>
 │       └── visualize.py
 │
 └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+```
+
+## Contributing
+
+We welcome contributions! [See the docs for guidelines](https://drivendata.github.io/cookiecutter-data-science/#contributing).
+
+### Installing development requirements
+------------
+
+    pip install -r requirements.txt
+
+### Running the tests
+------------
+
+    py.test tests
