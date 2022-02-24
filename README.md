@@ -12,7 +12,7 @@ There are 3 phases of our project:
 2. Machine Learning Model: we have used GPT-2 model and leveraged it using recipe data toi generate recipes on certain ingredients. 
 3. API Deployment: It is difficult to run GPT-2 model on a local system, so we have deployed it on EC2 and created the API on it using flask to setup the connection between API and web app.
 4. RelaxNG: We also created RelaxNG schema which is compact and simple and more natural representation of the document's structure. 
-5. Python Libraries: We have used various python libraries to support our objective such as pandas, lxml, sklearn, numpy, matplotlib, scipy, keras, tensorflow, transformers and others. 
+5. Python Libraries: We have used various python libraries to support our objective such as pandas, lxml, sklearn, numpy, matplotlib, scipy, keras, streamlit, tensorflow, transformers and others. 
 
 ### Tech Stack
 ------------
@@ -22,28 +22,22 @@ There are 3 phases of our project:
 * Github as VCS
 * VScode as Code Editor
 
-### The resulting directory structure
+### Directory structure of the project
 ------------
 
-The directory structure of your new project looks like this: 
+The directory structure of your recipe generator project looks like this: 
 
 ```
 ├── LICENSE
-├── Makefile           <- Makefile with commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
+├── README.md          <- Tell about the project, WHat it does? How it does? Why it does?
 ├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
+│   ├── processed      <- The final, canonical data sets for modeling such as recipes_csv.csv, recipes_xml.xml, dtd, xsd and other processed files. 
+│   └── raw            <- The original, immutable json data dump as recipes.json
 │
-├── docs               <- A default Sphinx project; see sphinx-doc.org for details
 │
-├── models             <- Trained and serialized models, model predictions, or model summaries
+├── models             <- Trained and serialized models, model predictions, or model summaries but it is placed on aws, not in project directory due to size limits.
 │
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
+├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering), containes EDA and dataformats notebooks.
 │
 ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
 │
