@@ -2,22 +2,17 @@
 Welcome! We are glad you have landed on our German Recipe Generator. The Recipe Generator is created to accept one or more ingredients in text format in the main central toolbar and to generate the procedure of a recipe that is done using the chosen ingredients. With Recipe Generator we want to help you find new recipes through which you can be able to employ food leftovers you have stuck in your fridge.<br>
 
 There are 3 phases of our project:
-1. Collect
-2. Prepare 
-3. Access
-
-### Description of phases
-------------
-In Collect phase we have collected the data from chefkoch.de, i.e. around 12,000 recipes. 
-In Prepare phase we created XML, DTD, XSD, RelaxNG Schemas for it, also created the database using SQLite to store user query and model output data.
-In Access phase we connected database with the web app from which functionality can be used. 
-
+1. Collect: In this phase we have collected the data from chefkoch.de, i.e. around 12,000 recipes. 
+2. Prepare: In this phase we created XML, DTD, XSD, RelaxNG Schemas for it, also created the database using SQLite to store user query and model output data.
+3. Access: In this phase we connected database with the web app from which functionality can be used.
+ 
 ### Technical Extensions
 ------------
-1. Web App
-2. Machine Learning Model
-3. API Deployment
-4. XML Technologies, Python Libraries
+1. Web App: we create the web app using streamlit for easy access of the solution. 
+2. Machine Learning Model: we have used GPT-2 model and leveraged it using recipe data toi generate recipes on certain ingredients. 
+3. API Deployment: It is difficult to run GPT-2 model on a local system, so we have deployed it on EC2 and created the API on it using flask to setup the connection between API and web app.
+4. RelaxNG: We also created RelaxNG schema which is compact and simple but effective in contrast to XML.
+5. Python Libraries: We have used various python libraries to support our objective such as pandas, lxml, sklearn, numpy, matplotlib, scipy, keras, tensorflow, transformers and others. 
 
 ### Tech Stack
 ------------
