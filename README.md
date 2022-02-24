@@ -1,5 +1,23 @@
 # RecipeGenerator
-Tech Stack needs to be defined <br>
+Welcome! We are glad you have landed on our German Recipe Generator. The Recipe Generator is created to accept one or more ingredients in text format in the main central toolbar and to generate the procedure of a recipe that is done using the chosen ingredients. With Recipe Generator we want to help you find new recipes through which you can be able to employ food leftovers you have stuck in your fridge.<br>
+
+There are 3 phases of our project:
+1. Collect
+2. Prepare 
+3. Access
+
+In Collect phase we have collected the data from chefkoch.de, i.e. around 12,000 recipes. 
+In Prepare phase we created XML, DTD, XSD, RelaxNG Schemas for it, also created the database using SQLite to store user query and model output data.
+In Access phase we connected database with the web app from which functionality can be used. 
+
+### Technical Extensions
+1. Web App
+2. Machine Learning Model
+3. API Deployment
+4. XML Technologies, Python Libraries
+
+### Tech Stack
+
 Extension needs to be decided, choices are Redis, Cassandra, Aws Athena <br>
 We are storing user query data and timestamps, and we will EDA on that data into the dashboard using streamlit.io <br>
 The Apps frontend will be on streamlit.io <br>
@@ -67,16 +85,6 @@ The directory structure of your new project looks like this:
 └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 ```
 
-## Contributing
-
-We welcome contributions! [See the docs for guidelines](https://drivendata.github.io/cookiecutter-data-science/#contributing).
 
 ### Installing development requirements
 ------------
-
-    pip install -r requirements.txt
-
-### Running the tests
-------------
-
-    py.test tests
