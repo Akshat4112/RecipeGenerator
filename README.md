@@ -16,11 +16,11 @@ There are 3 phases of our project:
 
 ### Tech Stack
 ------------
-*Python 3.9.1 and its libraries
-*SQLite for database
-*AWS EC2 for API endpoint
-*Github as VCS
-*VScode as Code Editor
+* Python 3.9.1 and its libraries
+* SQLite for database
+* AWS EC2 for API endpoint
+* Github as VCS
+* VScode as Code Editor
 
 ### The resulting directory structure
 ------------
