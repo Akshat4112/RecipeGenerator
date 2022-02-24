@@ -80,6 +80,15 @@ The directory structure of your recipe generator project looks like this:
 
 ```
 
-
-### Installing development requirements
+### Citation
 ------------
+If you use this library for your publications, please cite it as:
+```
+author    = {Silvia Cunico},{Akshat Gupta}
+title     = {Recipe Generator using GPT-2},
+address   = {Universitat Stuttgart, Stuttgart, Germany},
+year      = {2022},
+month     = {February},
+url       = {https://github.com/Akshat4112/RecipeGenerator}
+}
+```
