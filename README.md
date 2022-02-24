@@ -11,14 +11,16 @@ There are 3 phases of our project:
 1. Web App: we create the web app using streamlit for easy access of the solution. 
 2. Machine Learning Model: we have used GPT-2 model and leveraged it using recipe data toi generate recipes on certain ingredients. 
 3. API Deployment: It is difficult to run GPT-2 model on a local system, so we have deployed it on EC2 and created the API on it using flask to setup the connection between API and web app.
-4. RelaxNG: We also created RelaxNG schema which is compact and simple but effective in contrast to XML.
+4. RelaxNG: We also created RelaxNG schema which is compact and simple and more natural representation of the document's structure. 
 5. Python Libraries: We have used various python libraries to support our objective such as pandas, lxml, sklearn, numpy, matplotlib, scipy, keras, tensorflow, transformers and others. 
 
 ### Tech Stack
 ------------
-
-
-
+*Python 3.9.1 and its libraries
+*SQLite for database
+*AWS EC2 for API endpoint
+*Github as VCS
+*VScode as Code Editor
 
 ### The resulting directory structure
 ------------
