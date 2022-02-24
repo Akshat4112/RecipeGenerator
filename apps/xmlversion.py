@@ -1,7 +1,11 @@
 import streamlit as st
+
+# Function to show XML Version of the dataset.
+
+
 def app():
-  st.subheader("XML for the Dataset")
-  code  = ''' <?xml version='1.0' encoding='utf-8'?>
+    st.subheader("XML for the Dataset")
+    code = ''' <?xml version='1.0' encoding='utf-8'?>
   <data>
     <row>
       <index>0</index>
@@ -25,5 +29,4 @@ def app():
       <Month>July</Month>
       <Weekday>Saturday</Weekday>
     </row>'''
-  st.code(code, language='xml')
-  
+    st.code(code, language='xml')

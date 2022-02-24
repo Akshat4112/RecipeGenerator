@@ -1,7 +1,11 @@
 import streamlit as st
+
+# Function to show XSD for the dataset.
+
+
 def app():
-  st.subheader("XSD for the Dataset")
-  code  = '''
+    st.subheader("XSD for the Dataset")
+    code = '''
   <?xml version="1.0" encoding="UTF-8"?>
   <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="data" type="dataType"/>
@@ -37,5 +41,4 @@ def app():
     </xs:complexType>
   </xs:schema>
   '''
-  st.code(code, language='xml')
-  
+    st.code(code, language='xml')

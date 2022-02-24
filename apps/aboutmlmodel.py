@@ -1,4 +1,7 @@
 import streamlit as st
+# Function which describes about GPT2 Machine Learning Model used? and how it is being trained?
+
+
 def app():
     st.subheader("ML Model: GPT2 Architecture")
     st.image("./images/gpt2.png")

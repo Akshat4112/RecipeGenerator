@@ -1,6 +1,9 @@
 import sqlite3
 import pandas as pd
 from datetime import datetime
+
+#Code to create a database with the schema and insert one entry in the database. 
+
 conn = sqlite3.connect('textechdb781')
 c = conn.cursor()
 

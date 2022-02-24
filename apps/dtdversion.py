@@ -1,7 +1,11 @@
 import streamlit as st
+
+# Function to create a DTD version of the dataset.
+
+
 def app():
     st.subheader("DTD for the Dataset")
-    code  = ''' <?xml encoding="UTF-8"?>
+    code = ''' <?xml encoding="UTF-8"?>
 
     <!ELEMENT data (row)+>
     <!ATTLIST data
@@ -48,4 +52,3 @@ def app():
         xmlns CDATA #FIXED ''>
     '''
     st.code(code, language='xml')
-    

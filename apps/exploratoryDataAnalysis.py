@@ -4,16 +4,19 @@ import pandas as pd
 from collections import Counter
 import numpy as np
 import matplotlib.pyplot as plt
-import ast
-import json
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 # @st.cache(persist=True)
+
+
 def explore_data():
     df = pd.read_csv("data/processed/recipes_csv.csv")
-    df = df.drop(columns=['index','Unnamed: 0'])
+    df = df.drop(columns=['index', 'Unnamed: 0'])
     return df
-    
+
+# Function to show EDA on the Dataset on the dashboard
+
+
 def app():
     st.title("EDA on dataset")
     data = explore_data()
@@ -32,7 +35,8 @@ def app():
     if st.checkbox("Show Column Names"):
         st.write(data.columns)
 
-    data_dim = st.radio('What Dimension Do You Want to Show',('Rows','Columns'))
+    data_dim = st.radio(
+        'What Dimension Do You Want to Show', ('Rows', 'Columns'))
     if data_dim == 'Rows':
         st.text("Showing Length of Rows")
         st.write(len(data))
@@ -40,7 +44,8 @@ def app():
         st.text("Showing Length of Columns")
         st.write(data.shape[1])
 
-    species_option = st.selectbox('Select Columns',('Url','Instructions','Ingredients','Day','Name', 'Year', 'Month', 'Weekday'))
+    species_option = st.selectbox(
+        'Select Columns', ('Url', 'Instructions', 'Ingredients', 'Day', 'Name', 'Year', 'Month', 'Weekday'))
     data = explore_data()
     if species_option == 'Url':
         st.write(data['Url'])
@@ -60,16 +65,15 @@ def app():
         st.write(data['Weekday'])
     else:
         st.write("Select A Column")
-    
+
     if st.checkbox("Show Year Distribution"):
-        st.write(data.Year.value_counts().plot(kind='bar',figsize=(5,5)))
+        st.write(data.Year.value_counts().plot(kind='bar', figsize=(5, 5)))
         st.pyplot()
 
     if st.checkbox("Show Month Distribution"):
-        st.write(data.Month.value_counts().plot(kind='bar',figsize=(5,5)))
+        st.write(data.Month.value_counts().plot(kind='bar', figsize=(5, 5)))
         st.pyplot()
 
     if st.checkbox("Show Weekday Distribution"):
-        st.write(data.Weekday.value_counts().plot(kind='bar',figsize=(5,5)))
+        st.write(data.Weekday.value_counts().plot(kind='bar', figsize=(5, 5)))
         st.pyplot()
-    
