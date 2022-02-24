@@ -47,36 +47,36 @@ The directory structure of your recipe generator project looks like this:
 │                         generated with `pip freeze > requirements.txt`
 │
 ├── apps                <- Source code for use in this project.
-│   ├── about_dataset.py    <- 
+│   ├── about_dataset.py    <- containes function which tells about the dataset, data description.
 │   │
-│   ├── aboutmlmodel.py     <- 
+│   ├── aboutmlmodel.py     <- contains function which describes about GPT2 Machine Learning Model used? and how it is being trained?
 │   │
-│   ├── dashboard.py        <- 
+│   ├── dashboard.py        <- contains function to create a dabase connection
 │   │
-│   ├── dtdversion.py       <- 
+│   ├── dtdversion.py       <- contains the document type definition of our xml document 
 │   │
-│   └── exploratoryDataAnalysis.py  <- Scripts to create exploratory and results oriented visualizations
+│   └── exploratoryDataAnalysis.py  <- scripts to create exploratory and results oriented visualizations
 │   │
-│   ├── gpt2_german_recipes.py       <- 
+│   ├── gpt2_german_recipes.py       <- contains a function to build text files from the json dataset, transformer model code
 │   │
-│   ├── interactiveapp.py       <- 
+│   ├── interactiveapp.py            <- contains a function to create the Interactive app, Homepage, API call and database dump. 
 │   │
-│   ├── relaxng.py        <- 
+│   ├── relaxng.py                   <- contains a function to show the RelaxNG Version of the dataset.
 │   │
-│   ├── whatitdoes.py       <- 
+│   ├── whatitdoes.py                <- contains a function to tell user about the app, what it does?
 │   │
-│   ├── xmlversion.py       <- 
+│   ├── xmlversion.py                <- contains our extracted data written in xml format
 │   │
-│   ├── xsd.py       <- 
-│── images                <-
+│   ├── xsd.py                       <- contains the xsd for our XML data, that defines it structure 
+│── images                           <- It has image resources used on the webapp. 
 │
-├──app.py          <- 
+├──app.py                            <- Main python script to run the multipage streamlit app
 │
-├──database.py          <- 
+├──database.py                       <- contains the code to create the dataset
 │
-├──multiapp.py          <- 
+├──multiapp.py                       <- function to support multiapp view for streamlit app
 │
-├──texttechdb781          <-
+├──texttechdb781                     <- SQlite database file
 
 ```
 
