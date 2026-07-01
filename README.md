@@ -9,18 +9,17 @@ There are 3 phases of our project:
 ### Technical Extensions
 ------------
 1. Web App: we create the web app using streamlit for easy access of the solution. 
-2. Machine Learning Model: we have used GPT-2 model and leveraged it using recipe data toi generate recipes on certain ingredients. 
-3. API Deployment: It is difficult to run GPT-2 model on a local system, so we have deployed it on EC2 and created the API on it using flask to setup the connection between API and web app.
-4. RelaxNG: We also created RelaxNG schema which is compact and simple and more natural representation of the document's structure. 
-5. Python Libraries: We have used various python libraries to support our objective such as pandas, lxml, sklearn, numpy, matplotlib, scipy, keras, streamlit, tensorflow, transformers and others. 
+2. Machine Learning Model: we have used GPT-2 model and leveraged it using recipe data to generate recipes on certain ingredients. The model runs locally using HuggingFace Transformers.
+3. RelaxNG: We also created RelaxNG schema which is compact and simple and more natural representation of the document's structure. 
+4. Python Libraries: We have used various python libraries to support our objective such as pandas, lxml, sklearn, numpy, matplotlib, streamlit, transformers and others. 
 
 ### Tech Stack
 ------------
-* Python 3.9.1 and its libraries
+* Python 3.9+ and its libraries
 * SQLite for database
-* AWS EC2 for API endpoint
-* Github as VCS
-* VScode as Code Editor
+* HuggingFace Transformers for local GPT-2 inference
+* GitHub as VCS
+* VSCode as Code Editor
 
 ### Directory structure of the project
 ------------
@@ -29,54 +28,35 @@ The directory structure of your recipe generator project looks like this:
 
 ```
 ├── LICENSE
-├── README.md          <- Tell about the project, WHat it does? How it does? Why it does?
+├── README.md             <- Project overview and documentation
+├── config.py             <- Configuration (model paths, DB path, env vars)
+├── db.py                 <- Shared database connection and schema setup
+├── model.py              <- Local GPT-2 model loading and recipe generation
+├── app.py                <- Main entry point for the multi-page Streamlit app
+├── multiapp.py           <- MultiApp framework for Streamlit page navigation
+├── database.py           <- Standalone script to initialize and check the DB
+├── requirements.txt      <- Direct project dependencies
+├── .gitignore            <- Git ignore rules
 ├── data
-│   ├── processed      <- The final, canonical data sets for modeling such as recipes_csv.csv, recipes_xml.xml, dtd, xsd and other processed files. 
-│   └── raw            <- The original, immutable json data dump as recipes.json
-│
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries but it is placed on aws, not in project directory due to size limits.
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering), containes EDA and dataformats notebooks.
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated PPTs, Documents and screenshots for the app. 
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── apps                <- Source code for use in this project.
-│   ├── about_dataset.py    <- containes function which tells about the dataset, data description.
-│   │
-│   ├── aboutmlmodel.py     <- contains function which describes about GPT2 Machine Learning Model used? and how it is being trained?
-│   │
-│   ├── dashboard.py        <- contains function to create a dabase connection
-│   │
-│   ├── dtdversion.py       <- contains the document type definition of our xml document 
-│   │
-│   └── exploratoryDataAnalysis.py  <- scripts to create exploratory and results oriented visualizations
-│   │
-│   ├── gpt2_german_recipes.py       <- contains a function to build text files from the json dataset, transformer model code
-│   │
-│   ├── interactiveapp.py            <- contains a function to create the Interactive app, Homepage, API call and database dump. 
-│   │
-│   ├── relaxng.py                   <- contains a function to show the RelaxNG Version of the dataset.
-│   │
-│   ├── whatitdoes.py                <- contains a function to tell user about the app, what it does?
-│   │
-│   ├── xmlversion.py                <- contains our extracted data written in xml format
-│   │
-│   ├── xsd.py                       <- contains the xsd for our XML data, that defines it structure 
-│── images                           <- It has image resources used on the webapp. 
-│
-├──app.py                            <- Main python script to run the multipage streamlit app
-│
-├──database.py                       <- contains the code to create the dataset
-│
-├──multiapp.py                       <- function to support multiapp view for streamlit app
-│
-├──texttechdb781                     <- SQlite database file
+│   ├── processed         <- Processed data (CSV, XML)
+│   └── raw               <- Original JSON data dump
+├── notebooks             <- Jupyter notebooks (EDA, data format conversion)
+├── apps                  <- Streamlit page modules (each exports an app() function)
+│   ├── interactiveapp.py <- Homepage with ingredient input and local LLM generation
+│   ├── about_dataset.py  <- Dataset description
+│   ├── aboutmlmodel.py   <- GPT-2 model architecture info
+│   ├── dashboard.py      <- Insight dashboard from DB query history
+│   ├── exploratoryDataAnalysis.py <- EDA visualizations
+│   ├── dtdversion.py     <- DTD schema display
+│   ├── xmlversion.py     <- XML data display
+│   ├── xsd.py            <- XSD schema display
+│   ├── relaxng.py        <- RelaxNG schema display
+│   ├── whatitdoes.py     <- App description page
+│   └── gpt2_german_recipes.py <- Model training script
+├── src
+│   └── ml_api.py         <- Optional Flask API server for model inference
+├── images                <- Static image assets for the webapp
+└── docs                  <- Project planning notes
 
 ```
 
