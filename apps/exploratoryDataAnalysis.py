@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
 
 def explore_data():
     df = pd.read_csv("data/processed/recipes_csv.csv")
