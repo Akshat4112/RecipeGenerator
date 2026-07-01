@@ -1,8 +1,13 @@
+import logging
+
 from db import get_connection
 
+logger = logging.getLogger(__name__)
+
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     with get_connection() as conn:
-        print("Database initialized successfully.")
+        logger.info("Database initialized successfully.")
         cursor = conn.execute("SELECT COUNT(*) FROM history")
         count = cursor.fetchone()[0]
-        print(f"History table has {count} rows.")
+        logger.info("History table has %d rows.", count)

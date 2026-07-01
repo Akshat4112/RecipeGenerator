@@ -1,8 +1,13 @@
 import streamlit as st
-# Function which describes about GPT2 Machine Learning Model used? and how it is being trained?
 
 
-def app():
-    st.subheader("ML Model: GPT2 Architecture")
+def app() -> None:
+    st.subheader("ML-Modell: GPT-2 Architektur")
     st.image("./images/gpt2.png")
-    st.markdown("GPT-2 is a large transformer-based language model with 1.5 billion parameters, trained on a dataset of 8 million web pages. GPT-2 is trained with a simple objective: predict the next word, given all of the previous words within some text.")
+    st.markdown(
+        "GPT-2 ist ein großes transformerbasiertes Sprachmodell mit 1,5 Milliarden Parametern, "
+        "das auf einem Datensatz von 8 Millionen Webseiten trainiert wurde. "
+        "GPT-2 wird mit einem einfachen Ziel trainiert: das nächste Wort vorherzusagen, "
+        "basierend auf allen vorherigen Wörtern in einem Text. "
+        "Wir verwenden eine deutsche Variante (german-gpt2), die auf deutschen Texten vortrainiert wurde."
+    )

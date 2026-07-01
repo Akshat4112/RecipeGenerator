@@ -1,10 +1,11 @@
 import os
 import sys
-from flask import Flask, request, json
+
+from flask import Flask, json, request
 from transformers import pipeline
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import MODEL_NAME, LOCAL_MODEL_PATH, MAX_LENGTH
+from config import LOCAL_MODEL_PATH, MAX_LENGTH, MODEL_NAME
 
 app = Flask(__name__)
 

@@ -1,58 +1,71 @@
+import altair as alt
 import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
+
+from data_loader import load_recipes
 
 
-def explore_data():
-    df = pd.read_csv("data/processed/recipes_csv.csv")
-    df = df.drop(columns=['index', 'Unnamed: 0'])
-    return df
+def app() -> None:
+    st.title("Explorative Datenanalyse")
+    data = load_recipes()
 
-
-def app():
-    st.title("EDA on dataset")
-    data = explore_data()
-    if st.checkbox("Show Dataset"):
-        if st.button("Head"):
+    if st.checkbox("Datensatz anzeigen"):
+        if st.button("Anfang"):
             st.write(data.head())
-        elif st.button("Tail"):
+        elif st.button("Ende"):
             st.write(data.tail())
         else:
             st.write(data.head(2))
 
-    if st.checkbox("Show All Dataset"):
+    if st.checkbox("Gesamten Datensatz anzeigen"):
         st.write(data)
 
-    if st.checkbox("Show Column Names"):
+    if st.checkbox("Spaltennamen anzeigen"):
         st.write(data.columns)
 
     data_dim = st.radio(
-        'What Dimension Do You Want to Show', ('Rows', 'Columns'))
-    if data_dim == 'Rows':
-        st.text("Showing Length of Rows")
+        "Welche Dimension anzeigen?", ("Zeilen", "Spalten"))
+    if data_dim == "Zeilen":
+        st.text("Anzahl der Zeilen")
         st.write(len(data))
-    if data_dim == 'Columns':
-        st.text("Showing Length of Columns")
+    if data_dim == "Spalten":
+        st.text("Anzahl der Spalten")
         st.write(data.shape[1])
 
     species_option = st.selectbox(
-        'Select Columns', ('Url', 'Instructions', 'Ingredients', 'Day', 'Name', 'Year', 'Month', 'Weekday'))
+        "Spalte auswählen",
+        ("Url", "Instructions", "Ingredients", "Day", "Name", "Year", "Month", "Weekday"),
+    )
     if species_option in data.columns:
         st.write(data[species_option])
     else:
-        st.write("Select A Column")
+        st.write("Spalte auswählen")
 
-    if st.checkbox("Show Year Distribution"):
-        fig, ax = plt.subplots(figsize=(5, 5))
-        data.Year.value_counts().plot(kind='bar', ax=ax)
-        st.pyplot(fig)
+    if st.checkbox("Jahresverteilung anzeigen"):
+        year_counts = data["Year"].value_counts().reset_index()
+        year_counts.columns = ["Jahr", "Anzahl"]
+        chart = alt.Chart(year_counts).mark_bar().encode(
+            x=alt.X("Jahr:N", sort="-y"),
+            y="Anzahl:Q",
+            tooltip=["Jahr", "Anzahl"],
+        )
+        st.altair_chart(chart, use_container_width=True)
 
-    if st.checkbox("Show Month Distribution"):
-        fig, ax = plt.subplots(figsize=(5, 5))
-        data.Month.value_counts().plot(kind='bar', ax=ax)
-        st.pyplot(fig)
+    if st.checkbox("Monatsverteilung anzeigen"):
+        month_counts = data["Month"].value_counts().reset_index()
+        month_counts.columns = ["Monat", "Anzahl"]
+        chart = alt.Chart(month_counts).mark_bar().encode(
+            x=alt.X("Monat:N", sort="-y"),
+            y="Anzahl:Q",
+            tooltip=["Monat", "Anzahl"],
+        )
+        st.altair_chart(chart, use_container_width=True)
 
-    if st.checkbox("Show Weekday Distribution"):
-        fig, ax = plt.subplots(figsize=(5, 5))
-        data.Weekday.value_counts().plot(kind='bar', ax=ax)
-        st.pyplot(fig)
+    if st.checkbox("Wochentagsverteilung anzeigen"):
+        weekday_counts = data["Weekday"].value_counts().reset_index()
+        weekday_counts.columns = ["Wochentag", "Anzahl"]
+        chart = alt.Chart(weekday_counts).mark_bar().encode(
+            x=alt.X("Wochentag:N", sort="-y"),
+            y="Anzahl:Q",
+            tooltip=["Wochentag", "Anzahl"],
+        )
+        st.altair_chart(chart, use_container_width=True)
