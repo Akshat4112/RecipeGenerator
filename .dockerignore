@@ -1,0 +1,10 @@
+.git
+__pycache__
+*.pyc
+node_modules
+notebooks
+.ipynb_checkpoints
+gpt2-gerchef
+train_dataset.txt
+test_dataset.txt
+tests

@@ -1,55 +1,55 @@
-from pyparsing import col
-import streamlit as st
-import sqlite3
-import pandas as pd
-import sqlite3
 from collections import Counter
 
-# Function to create a dabase connection
+import pandas as pd
+import streamlit as st
+
+from db import get_connection
 
 
-def create_connection(dbfile):
-    conn = None
+def app() -> None:
+    st.subheader("Analyse-Dashboard")
+
     try:
-        conn = sqlite3.connect(dbfile)
+        with get_connection() as conn:
+            df = pd.read_sql_query("SELECT * FROM history", conn)
     except Exception as e:
-        print(e)
+        st.error(f"Fehler beim Laden der Daten: {e}")
+        return
 
-    return conn
+    if df.empty:
+        st.info("Noch keine Daten vorhanden.")
+        return
 
+    df["date"] = pd.to_datetime(df["date"], errors="coerce")
 
-# code to fetch data from database and create a dataframe out of it.
-database = "textechdb781"
-conn = create_connection(database)
-c = conn.cursor()
-c.execute('''SELECT * FROM history''')
-df = pd.DataFrame(c.fetchall(), columns=['id', 'input_text', 'model', 'date'])
-print(df.tail())
+    col1, col2 = st.columns(2)
+    with col1:
+        start_date = st.date_input("Von", value=df["date"].min())
+    with col2:
+        end_date = st.date_input("Bis", value=df["date"].max())
 
-# Code block to get top 10 items out of database
-top_10 = df['input_text']
-top_10_item = []
-for item in df['input_text']:
-    top_10_item.append(item)
-top_10_item = Counter(top_10_item)
-top_10_item = dict(top_10_item)
+    mask = (df["date"] >= pd.Timestamp(start_date)) & (df["date"] <= pd.Timestamp(end_date) + pd.Timedelta(days=1))
+    filtered = df.loc[mask]
 
-top_10_dict = pd.DataFrame.from_dict(top_10_item, orient='index')
-top_10_dict.columns = ['name']
+    st.write(f"**{len(filtered)}** Generierungen im gewählten Zeitraum")
 
-# Function to get data on insight dashboard.
+    if filtered.empty:
+        st.info("Keine Daten im gewählten Zeitraum.")
+        return
 
+    top_items = Counter(filtered["input_text"]).most_common(10)
+    top_df = pd.DataFrame(top_items, columns=["Zutat", "Anzahl"])
 
-def app():
-    st.markdown("Data Insight Dashboard")
     left_column, right_column = st.columns(2)
-    # You can use a column just like st.sidebar:
     with left_column:
-        st.text("Top 10 search items are: ")
-        st.dataframe(top_10_dict[:10])
-        print("Chart")
-
-    # Or even better, call Streamlit functions inside a "with" block:
+        st.text("Top 10 gesuchte Zutaten:")
+        st.dataframe(top_df)
     with right_column:
-        print("Draw a Chart")
-        print(top_10_dict.name.value_counts())
+        st.bar_chart(top_df.set_index("Zutat"))
+
+    st.download_button(
+        "CSV exportieren",
+        filtered.to_csv(index=False),
+        "verlauf.csv",
+        "text/csv",
+    )

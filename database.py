@@ -1,23 +1,13 @@
-import sqlite3
-import pandas as pd
-from datetime import datetime
+import logging
 
-#Code to create a database with the schema and insert one entry in the database. 
+from db import get_connection
 
-conn = sqlite3.connect('textechdb781')
-c = conn.cursor()
+logger = logging.getLogger(__name__)
 
-c.execute('''
-          CREATE TABLE IF NOT EXISTS history
-          ([id] INTEGER PRIMARY KEY AUTOINCREMENT, [input_text] TEXT, [model] TEXT, [date] TEXT)
-          ''')
-
-text_inp = 'onion'
-model_output = 'this is onion'
-now = datetime.now()
-c.execute('''INSERT INTO history (input_text, model, date) VALUES(?,?,?)''',(text_inp, model_output, now ))
-c.execute('''SELECT * FROM history''')
-conn.commit()
-
-df = pd.DataFrame(c.fetchall(), columns=['id','input_text', 'model', 'date'])
-print(df)
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
+    with get_connection() as conn:
+        logger.info("Database initialized successfully.")
+        cursor = conn.execute("SELECT COUNT(*) FROM history")
+        count = cursor.fetchone()[0]
+        logger.info("History table has %d rows.", count)

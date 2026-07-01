@@ -1,22 +1,21 @@
 import streamlit as st
 
-# Function which tells about the dataset, data description.
 
+def app() -> None:
+    st.subheader("Über den Datensatz")
+    st.write("""
+    Dieser Datensatz enthält 12.190 deutsche Rezepte mit Metadaten, die von chefkoch.de gecrawlt wurden.
 
-def app():
-    st.subheader("About the Dataset")
-    st.write('''
-    This dataset contains 12190 german recipes with metadata crawled from chefkoch.de*. \n
-    Each json document contains the following fields: \n
-    Ingredients: the ingredients of the recipe as array \n
-    Instructions: the instructions as free text \n
-    Name: the name of the recipe \n
-    Url: the source url \n
-    Day: the day where the recipe was created \n
-    Month: the month where the recipe was created \n
-    Year: the year where the recipe was created \n
-    Weekday: the weekday where the recipe was created \n
-    
-    Acknowledgements \n
-    The data is for research purposes only and belongs to www.chefkoch.de. \n
-    The data has been collected with the help of https://github.com/TobiasPleyer/chefkoch ''')
+    Jedes Dokument enthält folgende Felder:
+    - **Ingredients:** Die Zutaten des Rezepts als Liste
+    - **Instructions:** Die Zubereitungsanweisungen als Freitext
+    - **Name:** Der Name des Rezepts
+    - **Url:** Die Quell-URL
+    - **Day:** Der Tag, an dem das Rezept erstellt wurde
+    - **Month:** Der Monat der Erstellung
+    - **Year:** Das Jahr der Erstellung
+    - **Weekday:** Der Wochentag der Erstellung
+
+    **Hinweis:** Die Daten dienen ausschließlich Forschungszwecken und gehören www.chefkoch.de.
+    Die Daten wurden mit Hilfe von https://github.com/TobiasPleyer/chefkoch gesammelt.
+    """)

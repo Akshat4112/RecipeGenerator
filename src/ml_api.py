@@ -1,38 +1,32 @@
-# pyright: reportUnboundVariable=false
-from typing import Counter
-from flask import Flask, request, jsonify,json
-import pandas as pd
-import numpy as np
-# import pickle
-# from pathlib import Path    
-# from datetime import datetime
-# import json
-from sklearn import preprocessing
-from sklearn.model_selection import train_test_split
-from sklearn.neural_network import MLPClassifier
-from sklearn.metrics import classification_report
-from sklearn.preprocessing import LabelEncoder
+import os
+import sys
+
+from flask import Flask, json, request
 from transformers import pipeline
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from config import LOCAL_MODEL_PATH, MAX_LENGTH, MODEL_NAME
 
 app = Flask(__name__)
 
-# load the model from disk
-chef = pipeline('text-generation',model='./gpt2-gerchef', tokenizer='anonymous-german-nlp/german-gpt2')
+model_path = LOCAL_MODEL_PATH if os.path.isdir(LOCAL_MODEL_PATH) else MODEL_NAME
+chef = pipeline("text-generation", model=model_path, tokenizer=MODEL_NAME)
 
-@app.route('/')
+
+@app.route("/")
 def test():
-    return "Test API"
+    return "Recipe Generator API"
 
-@app.route('/predict_text', methods=["POST"])
+
+@app.route("/predict_text", methods=["POST"])
 def predict():
-    #Take text input
-    result = chef('Zuerst Hähnchen') 
-    result = result[0]['generated_text']
-    print(result)
+    data = request.get_json()
+    text = data.get("text", "")
+    if not text.strip():
+        return json.dumps({"error": "No input text provided"}), 400
+    result = chef(text, max_length=MAX_LENGTH, num_return_sequences=1)
     return json.dumps({"prediction": result})
 
-if __name__== '__main__':
-    app.run(port=5001)
 
-#ssh -i "textech.pem" ubuntu@ec2-3-20-227-146.us-east-2.compute.amazonaws.com
-#ec2-3-20-227-146.us-east-2.compute.amazonaws.com
+if __name__ == "__main__":
+    app.run(port=5001)

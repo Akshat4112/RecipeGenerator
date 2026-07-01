@@ -1,8 +1,12 @@
 import streamlit as st
 
-# Function to tell user about the app, what it does?
 
-
-def app():
-    st.subheader("What Recipe Generator does? ")
-    st.write("Welcome! We are glad you have landed on our German Recipe Generator. The Recipe Generator is created to accept one or more ingredients in text format in the main central toolbar and to generate the procedure of a recipe that is done using the chosen ingredients. With Recipe Generator we want to help you find new recipes through which you can be able to employ food leftovers you have stuck in your fridge.")
+def app() -> None:
+    st.subheader("Was macht der Rezeptgenerator?")
+    st.write(
+        "Willkommen! Wir freuen uns, dass Sie unseren deutschen Rezeptgenerator besuchen. "
+        "Der Rezeptgenerator akzeptiert eine oder mehrere Zutaten als Texteingabe und "
+        "generiert daraus ein Rezept mit Zubereitungsanweisungen. "
+        "Mit dem Rezeptgenerator möchten wir Ihnen helfen, neue Rezepte zu entdecken, "
+        "mit denen Sie Lebensmittelreste verwerten können."
+    )
