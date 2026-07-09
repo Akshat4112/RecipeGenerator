@@ -13,12 +13,11 @@ def app() -> None:
     st.text("Eingereicht von: Silvia Cunico, Akshat Gupta")
 
     with st.sidebar.expander("Einstellungen"):
-        temperature = st.slider("Temperatur", 0.1, 2.0, 1.0, 0.1,
-                                help="Höhere Werte = kreativer, niedrigere = konservativer")
-        max_length = st.slider("Maximale Länge", 50, 500, 200, 50,
-                               help="Maximale Anzahl generierter Tokens")
-        top_p = st.slider("Top-p", 0.1, 1.0, 0.9, 0.05,
-                          help="Nucleus Sampling: kleinere Werte = fokussierter")
+        temperature = st.slider(
+            "Temperatur", 0.1, 2.0, 1.0, 0.1, help="Höhere Werte = kreativer, niedrigere = konservativer"
+        )
+        max_length = st.slider("Maximale Länge", 50, 500, 200, 50, help="Maximale Anzahl generierter Tokens")
+        top_p = st.slider("Top-p", 0.1, 1.0, 0.9, 0.05, help="Nucleus Sampling: kleinere Werte = fokussierter")
 
     text_inp = st.text_input("Zutaten eingeben", max_chars=500)
 

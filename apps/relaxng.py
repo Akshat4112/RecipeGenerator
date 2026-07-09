@@ -5,7 +5,7 @@ import streamlit as st
 
 def app():
     st.subheader("RelaxNG for the Dataset")
-    code = ''' 
+    code = """ 
     <?xml version="1.0" encoding="UTF-8"?>
     <grammar ns="" xmlns="http://relaxng.org/ns/structure/1.0">
         <define name="data">
@@ -124,5 +124,5 @@ def app():
         </start>
     </grammar>
 
-    '''
-    st.code(code, language='xml')
+    """
+    st.code(code, language="xml")

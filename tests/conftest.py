@@ -1,4 +1,3 @@
-
 import pytest
 
 
@@ -22,5 +21,6 @@ def tmp_db(monkeypatch, tmp_path):
     db_path = str(tmp_path / "test.db")
     monkeypatch.setattr("config.DATABASE_PATH", db_path)
     import db as db_module
+
     monkeypatch.setattr(db_module, "DATABASE_PATH", db_path)
     return db_path

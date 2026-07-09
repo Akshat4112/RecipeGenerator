@@ -22,8 +22,7 @@ def app() -> None:
     if st.checkbox("Spaltennamen anzeigen"):
         st.write(data.columns)
 
-    data_dim = st.radio(
-        "Welche Dimension anzeigen?", ("Zeilen", "Spalten"))
+    data_dim = st.radio("Welche Dimension anzeigen?", ("Zeilen", "Spalten"))
     if data_dim == "Zeilen":
         st.text("Anzahl der Zeilen")
         st.write(len(data))
@@ -43,29 +42,41 @@ def app() -> None:
     if st.checkbox("Jahresverteilung anzeigen"):
         year_counts = data["Year"].value_counts().reset_index()
         year_counts.columns = ["Jahr", "Anzahl"]
-        chart = alt.Chart(year_counts).mark_bar().encode(
-            x=alt.X("Jahr:N", sort="-y"),
-            y="Anzahl:Q",
-            tooltip=["Jahr", "Anzahl"],
+        chart = (
+            alt.Chart(year_counts)
+            .mark_bar()
+            .encode(
+                x=alt.X("Jahr:N", sort="-y"),
+                y="Anzahl:Q",
+                tooltip=["Jahr", "Anzahl"],
+            )
         )
         st.altair_chart(chart, use_container_width=True)
 
     if st.checkbox("Monatsverteilung anzeigen"):
         month_counts = data["Month"].value_counts().reset_index()
         month_counts.columns = ["Monat", "Anzahl"]
-        chart = alt.Chart(month_counts).mark_bar().encode(
-            x=alt.X("Monat:N", sort="-y"),
-            y="Anzahl:Q",
-            tooltip=["Monat", "Anzahl"],
+        chart = (
+            alt.Chart(month_counts)
+            .mark_bar()
+            .encode(
+                x=alt.X("Monat:N", sort="-y"),
+                y="Anzahl:Q",
+                tooltip=["Monat", "Anzahl"],
+            )
         )
         st.altair_chart(chart, use_container_width=True)
 
     if st.checkbox("Wochentagsverteilung anzeigen"):
         weekday_counts = data["Weekday"].value_counts().reset_index()
         weekday_counts.columns = ["Wochentag", "Anzahl"]
-        chart = alt.Chart(weekday_counts).mark_bar().encode(
-            x=alt.X("Wochentag:N", sort="-y"),
-            y="Anzahl:Q",
-            tooltip=["Wochentag", "Anzahl"],
+        chart = (
+            alt.Chart(weekday_counts)
+            .mark_bar()
+            .encode(
+                x=alt.X("Wochentag:N", sort="-y"),
+                y="Anzahl:Q",
+                tooltip=["Wochentag", "Anzahl"],
+            )
         )
         st.altair_chart(chart, use_container_width=True)

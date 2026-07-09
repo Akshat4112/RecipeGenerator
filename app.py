@@ -18,7 +18,7 @@ from multiapp import MultiApp
 
 st.set_page_config(
     page_title="Deutscher Rezeptgenerator",
-    page_icon="\U0001F373",
+    page_icon="\U0001f373",
     layout="wide",
 )
 

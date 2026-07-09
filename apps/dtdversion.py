@@ -5,7 +5,7 @@ import streamlit as st
 
 def app():
     st.subheader("DTD for the Dataset")
-    code = ''' <?xml encoding="UTF-8"?>
+    code = """ <?xml encoding="UTF-8"?>
 
     <!ELEMENT data (row)+>
     <!ATTLIST data
@@ -50,5 +50,5 @@ def app():
     <!ELEMENT Weekday (#PCDATA)>
     <!ATTLIST Weekday
         xmlns CDATA #FIXED ''>
-    '''
-    st.code(code, language='xml')
+    """
+    st.code(code, language="xml")

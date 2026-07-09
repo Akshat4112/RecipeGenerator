@@ -27,6 +27,7 @@ def test_insert_and_query(tmp_db):
 
 def test_migrate_renames_model_column(tmp_db):
     import sqlite3
+
     conn = sqlite3.connect(tmp_db)
     conn.execute("""
         CREATE TABLE history

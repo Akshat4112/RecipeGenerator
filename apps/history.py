@@ -9,9 +9,7 @@ def app() -> None:
 
     try:
         with get_connection() as conn:
-            df = pd.read_sql_query(
-                "SELECT * FROM history ORDER BY date DESC", conn
-            )
+            df = pd.read_sql_query("SELECT * FROM history ORDER BY date DESC", conn)
     except Exception as e:
         st.error(f"Fehler beim Laden: {e}")
         return

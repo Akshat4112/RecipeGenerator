@@ -22,9 +22,8 @@ def app() -> None:
 
     filtered = data
     if search.strip():
-        mask = (
-            filtered["Name"].str.contains(search, case=False, na=False)
-            | filtered["Ingredients"].str.contains(search, case=False, na=False)
+        mask = filtered["Name"].str.contains(search, case=False, na=False) | filtered["Ingredients"].str.contains(
+            search, case=False, na=False
         )
         filtered = filtered[mask]
     if year != "Alle":
@@ -41,7 +40,7 @@ def app() -> None:
     max_pages = max(1, (len(filtered) - 1) // RECIPES_PER_PAGE + 1)
     page = st.number_input("Seite", min_value=1, max_value=max_pages, value=1)
     start = (page - 1) * RECIPES_PER_PAGE
-    page_data = filtered.iloc[start:start + RECIPES_PER_PAGE]
+    page_data = filtered.iloc[start : start + RECIPES_PER_PAGE]
 
     for _, row in page_data.iterrows():
         with st.expander(f"{row['Name']} ({row.get('Year', '')})"):

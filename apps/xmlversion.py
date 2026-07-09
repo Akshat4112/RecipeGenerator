@@ -5,7 +5,7 @@ import streamlit as st
 
 def app():
     st.subheader("XML for the Dataset")
-    code = ''' <?xml version='1.0' encoding='utf-8'?>
+    code = """ <?xml version='1.0' encoding='utf-8'?>
   <data>
     <row>
       <index>0</index>
@@ -28,5 +28,5 @@ def app():
       <Year>2017</Year>
       <Month>July</Month>
       <Weekday>Saturday</Weekday>
-    </row>'''
-    st.code(code, language='xml')
+    </row>"""
+    st.code(code, language="xml")
