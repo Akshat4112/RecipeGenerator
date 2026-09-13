@@ -73,7 +73,6 @@ The directory structure of the recipe generator project looks like this:
 ```
 ├── LICENSE
 ├── README.md             <- Project overview and documentation
-├── CLAUDE.md             <- AI assistant documentation
 ├── config.py             <- Configuration (model paths, DB path, env vars)
 ├── db.py                 <- Shared database connection, schema setup, migrations
 ├── model.py              <- Local GPT-2 model loading and recipe generation
